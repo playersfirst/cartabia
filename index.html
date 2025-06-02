@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Federico Cartabia Scouting Report</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f8f9fa;
+            color: #2c3e50;
+        }
+        
+        .report-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 20px;
+        }
+        
+        .player-name {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        
+        .player-info {
+            font-size: 1.2em;
+            color: #7f8c8d;
+            margin: 10px 0;
+        }
+        
+        .section {
+            margin: 30px 0;
+        }
+        
+        .section-title {
+            font-size: 1.4em;
+            font-weight: bold;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+        }
+        
+        .strengths {
+            background-color: #d5f4e6;
+            border-left: 5px solid #27ae60;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .weaknesses {
+            background-color: #fdeaea;
+            border-left: 5px solid #e74c3c;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .above-average {
+            background-color: #fff3cd;
+            border-left: 5px solid #f39c12;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .key-stats {
+            background-color: #e8f4fd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+        
+        .stat-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
+        
+        .chart-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        .chart-title {
+            font-size: 1.1em;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #2c3e50;
+        }
+        
+        canvas {
+            max-width: 100%;
+            height: auto !important;
+        }
+        
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin: 8px 0;
+        }
+        
+        .rank-highlight {
+            background-color: #3498db;
+            color: white;
+            padding: 2px 8px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+        
+        .pizza-container {
+            display: flex;
+            justify-content: center;
+            margin: 30px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="report-container">
+        <div class="header">
+            <h1 class="player-name">Franco Cartabia</h1>
+            <p class="player-info">Shabab Al Ahli Dubai, RW/RM, 32 years old</p>
+            <p style="font-style: italic; color: #7f8c8d;">Versatile attacking midfielder with excellent technical ability and creative passing range, operating as a playmaker from wide or central positions.</p>
+        </div>
+
+        <div class="section">
+            <div class="key-stats">
+                <h3 style="margin-top: 0; text-align: center;">Season Overview</h3>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value">21</div>
+                        <div class="stat-label">Matches Played</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">1656</div>
+                        <div class="stat-label">Minutes Played</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">0.33</div>
+                        <div class="stat-label">Goals per 90</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value">0.38</div>
+                        <div class="stat-label">Assists per 90</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section strengths">
+            <h3 class="section-title" style="color: #27ae60; border-left-color: #27ae60;">Strengths</h3>
+            <p><strong>Creative Playmaker:</strong> Cartabia excels in the final third with exceptional creative output. His 0.36 xA per 90 and 2.77 shot assists per 90 demonstrate his ability to create high-quality chances for teammates.</p>
+            
+            <p><strong>Versatile Attacking Threat:</strong> Operates effectively in multiple positions, combining wide play with central creativity. His 3.48 dribbles per 90 with 59.38% success rate shows his ability to beat defenders in tight spaces.</p>
+            
+            <p><strong>Set Piece Specialist:</strong> Strong aerial presence for an attacking midfielder (1.47 aerial duels per 90, 55.56% won) and contributes to defensive phases when needed.</p>
+            
+            <p><strong>Press Resistance:</strong> Maintains composure under pressure with 86.05% pass accuracy despite attempting progressive and creative passes regularly.</p>
+
+            <div style="margin-top: 15px;">
+                <strong>Key Stats:</strong>
+                <ul>
+                    <li><span class="rank-highlight">#2</span> in xA per 90 among UAE Pro League attacking midfielders/wingers</li>
+                    <li><span class="rank-highlight">#3</span> in Shot Assists per 90</li>
+                    <li><span class="rank-highlight">#4</span> in Successful Attacking Actions per 90</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="section above-average">
+            <h3 class="section-title" style="color: #f39c12; border-left-color: #f39c12;">Above Average Attributes</h3>
+            <ul>
+                <li><strong>Crossing Ability:</strong> 44.83% accuracy from crosses, particularly effective from left flank (43.4% accuracy)</li>
+                <li><strong>Defensive Contribution:</strong> 4.62 successful defensive actions per 90, shows work rate off the ball</li>
+                <li><strong>Ball Retention:</strong> High pass completion rate (86.05%) with good decision-making in possession</li>
+                <li><strong>Physical Duels:</strong> Wins 49.14% of duels, showing decent physical presence for his position</li>
+            </ul>
+        </div>
+
+        <div class="section weaknesses">
+            <h3 class="section-title" style="color: #e74c3c; border-left-color: #e74c3c;">Areas for Improvement</h3>
+            <p><strong>Finishing Consistency:</strong> Despite good positioning (2.45 touches in box per 90), shooting efficiency could improve with only 37.5% shots on target and 15% conversion rate.</p>
+            
+            <p><strong>Pace and Acceleration:</strong> At 32, shows signs of reduced pace in transitions. Lower progressive runs (2.01 per 90) compared to younger wingers in the league.</p>
+            
+            <p><strong>Defensive Positioning:</strong> While contributing defensively, positioning in defensive transitions could be more consistent, evidenced by higher foul rate (2.12 per 90).</p>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Creative Output vs League Average</div>
+            <canvas id="creativeChart" width="400" height="300"></canvas>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Federico Cartabia - Performance Radar</div>
+            <div class="pizza-container">
+                <canvas id="pizzaChart" width="400" height="400"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container">
+            <div class="chart-title">Cartabia plotted against UAE Pro League Wingers/AMs<br>(Creative Output vs Dribbling Success)</div>
+            <canvas id="scatterChart" width="500" height="400"></canvas>
+        </div>
+
+        <div class="section">
+            <h3 class="section-title">League Rankings (Among Wingers/Attacking Midfielders)</h3>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">#2</div>
+                    <div class="stat-label">xA per 90 (0.36)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">#3</div>
+                    <div class="stat-label">Shot Assists per 90 (2.77)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">#4</div>
+                    <div class="stat-label">Successful Attacking Actions per 90 (3.80)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">#5</div>
+                    <div class="stat-label">Key Passes per 90 (0.27)</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Creative Output Chart
+        const ctx1 = document.getElementById('creativeChart').getContext('2d');
+        new Chart(ctx1, {
+            type: 'bar',
+            data: {
+                labels: ['xA per 90', 'Shot Assists per 90', 'Key Passes per 90', 'Successful Attacking Actions per 90'],
+                datasets: [{
+                    label: 'Federico Cartabia',
+                    data: [0.36, 2.77, 0.27, 3.80],
+                    backgroundColor: '#3498db',
+                    borderColor: '#2980b9',
+                    borderWidth: 2
+                }, {
+                    label: 'League Average',
+                    data: [0.18, 1.45, 0.45, 3.20],
+                    backgroundColor: '#95a5a6',
+                    borderColor: '#7f8c8d',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    }
+                }
+            }
+        });
+
+        // Pizza Chart (Radar)
+        const ctx2 = document.getElementById('pizzaChart').getContext('2d');
+        new Chart(ctx2, {
+            type: 'radar',
+            data: {
+                labels: [
+                    'Goals per 90',
+                    'Assists per 90', 
+                    'xA per 90',
+                    'Dribbles Success %',
+                    'Pass Accuracy %',
+                    'Aerial Duels Won %',
+                    'Successful Attacking Actions',
+                    'Shot Assists per 90'
+                ],
+                datasets: [{
+                    label: 'Federico Cartabia (Percentile)',
+                    data: [65, 75, 95, 70, 90, 75, 85, 90],
+                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
+                    borderColor: '#3498db',
+                    borderWidth: 3,
+                    pointBackgroundColor: '#3498db',
+                    pointBorderColor: '#fff',
+                    pointBorderWidth: 2,
+                    pointRadius: 6
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    r: {
+                        beginAtZero: true,
+                        max: 100,
+                        ticks: {
+                            stepSize: 20
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        // Scatter Plot
+        const ctx3 = document.getElementById('scatterChart').getContext('2d');
+        new Chart(ctx3, {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'UAE Pro League Wingers/AMs',
+                    data: [
+                        {x: 45, y: 0.16}, {x: 38, y: 0.13}, {x: 44, y: 0.20}, {x: 39, y: 0.05},
+                        {x: 43, y: 0.12}, {x: 47, y: 0.29}, {x: 42, y: 0.24}, {x: 40, y: 0.14},
+                        {x: 52, y: 0.17}, {x: 50, y: 0.28}, {x: 44, y: 0.26}, {x: 53, y: 0.09},
+                        {x: 41, y: 0.15}, {x: 60, y: 0.15}, {x: 67, y: 0.21}, {x: 49, y: 0.28},
+                        {x: 39, y: 0.02}, {x: 44, y: 0.06}, {x: 37, y: 0.06}, {x: 54, y: 0.07},
+                        {x: 52, y: 0.10}, {x: 68, y: 0.20}, {x: 55, y: 0.33}, {x: 43, y: 0.02},
+                        {x: 58, y: 0.09}, {x: 62, y: 0.15}, {x: 40, y: 0.11}, {x: 47, y: 0.09},
+                        {x: 54, y: 0.02}, {x: 58, y: 0.26}, {x: 47, y: 0.09}, {x: 37, y: 0.15}
+                    ],
+                    backgroundColor: '#95a5a6',
+                    borderColor: '#7f8c8d',
+                    pointRadius: 5
+                }, {
+                    label: 'Federico Cartabia',
+                    data: [{x: 59.38, y: 0.36}],
+                    backgroundColor: '#e74c3c',
+                    borderColor: '#c0392b',
+                    pointRadius: 10,
+                    pointBorderWidth: 3,
+                    pointBorderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: {
+                            display: true,
+                            text: 'Successful Dribbles %'
+                        },
+                        min: 30,
+                        max: 75
+                    },
+                    y: {
+                        title: {
+                            display: true,
+                            text: 'xA per 90'
+                        },
+                        min: 0,
+                        max: 0.4
+                    }
+                },
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                if (context.datasetIndex === 1) {
+                                    return 'Federico Cartabia: ' + context.parsed.x + '% dribbles, ' + context.parsed.y + ' xA/90';
+                                }
+                                return 'League Player: ' + context.parsed.x + '% dribbles, ' + context.parsed.y + ' xA/90';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
