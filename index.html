@@ -306,51 +306,6 @@
             }
         });
 
-        // Pizza Chart (Radar)
-        const ctx2 = document.getElementById('pizzaChart').getContext('2d');
-        new Chart(ctx2, {
-            type: 'radar',
-            data: {
-                labels: [
-                    'Goals per 90',
-                    'Assists per 90', 
-                    'xA per 90',
-                    'Dribbles Success %',
-                    'Pass Accuracy %',
-                    'Aerial Duels Won %',
-                    'Successful Attacking Actions',
-                    'Shot Assists per 90'
-                ],
-                datasets: [{
-                    label: 'Federico Cartabia (Percentile)',
-                    data: [65, 75, 95, 70, 90, 75, 85, 90],
-                    backgroundColor: 'rgba(52, 152, 219, 0.2)',
-                    borderColor: '#3498db',
-                    borderWidth: 3,
-                    pointBackgroundColor: '#3498db',
-                    pointBorderColor: '#fff',
-                    pointBorderWidth: 2,
-                    pointRadius: 6
-                }]
-            },
-            options: {
-                responsive: true,
-                scales: {
-                    r: {
-                        beginAtZero: true,
-                        max: 100,
-                        ticks: {
-                            stepSize: 20
-                        }
-                    }
-                },
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
 
         // Scatter Plot
         const ctx3 = document.getElementById('scatterChart').getContext('2d');
